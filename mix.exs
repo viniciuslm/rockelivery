@@ -63,7 +63,8 @@ defmodule Rockelivery.MixProject do
       {:money, "~> 1.9"},
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
-      {:mock, "~> 0.3.0", only: :test}
+      {:mock, "~> 0.3.0", only: :test},
+      {:pbkdf2_elixir, "~> 1.3"}
     ]
   end
 
