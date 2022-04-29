@@ -7,6 +7,7 @@ defmodule Rockelivery.User do
   @foreign_key_type :binary_id
 
   @required_params [:address, :age, :cep, :cpf, :email, :password, :name]
+  @update_params @required_params -- [:password]
 
   @derive {Jason.Encoder, only: [:id, :name, :age, :cep, :cpf, :email, :address]}
 
@@ -25,8 +26,18 @@ defmodule Rockelivery.User do
 
   def changeset(params) do
     %__MODULE__{}
-    |> cast(params, @required_params)
-    |> validate_required(@required_params)
+    |> changes(params, @required_params)
+  end
+
+  def changeset(user, params) do
+    user
+    |> changes(params, @update_params)
+  end
+
+  defp changes(user, params, fields) do
+    user
+    |> cast(params, fields)
+    |> validate_required(fields)
     |> validate_length(:password, min: 6)
     |> validate_length(:cep, is: 8)
     |> validate_length(:cpf, is: 11)
