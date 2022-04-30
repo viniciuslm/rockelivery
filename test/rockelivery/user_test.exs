@@ -8,16 +8,20 @@ defmodule Rockelivery.UserTest do
 
   describe "changeset/2" do
     test "when all params are valid, returns a valid changeset" do
-      params = build :user_params
+      params = build(:user_params)
 
       response = User.changeset(params)
 
-      assert %Changeset{changes: %{
-        cpf: "02577788622",
-        email: "teste123@teste.com",
-        name: "Teste 2"
-      }, valid?: true} = response
+      assert %Changeset{
+               changes: %{
+                 cpf: "02577788622",
+                 email: "teste123@teste.com",
+                 name: "Teste 2"
+               },
+               valid?: true
+             } = response
     end
+
     test "when update a changeset, returns a valid changeset with the given changes" do
       params = build(:user_params)
 
@@ -27,13 +31,16 @@ defmodule Rockelivery.UserTest do
 
       response = User.changeset(params) |> User.changeset(update_params)
 
-      assert %Changeset{changes: %{
-        name: "Teste 3"
-      }, valid?: true} = response
+      assert %Changeset{
+               changes: %{
+                 name: "Teste 3"
+               },
+               valid?: true
+             } = response
     end
 
-    test "when there are some error, returns an invalid changeset" do
-      params = build(:user_params, %{ age: 12, password: "1234"})
+    test "when there is some error, returns an invalid changeset" do
+      params = build(:user_params, %{age: 12, password: "1234"})
 
       response = User.changeset(params)
 

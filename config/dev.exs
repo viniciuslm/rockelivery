@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :rockelivery, Rockelivery.Repo,
   username: "postgres",
-  password: "galo",
+  password: "postgres",
   hostname: "localhost",
   database: "rockelivery_dev",
   stacktrace: true,
