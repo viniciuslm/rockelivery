@@ -1,7 +1,7 @@
 defmodule Rockelivery.Users.List do
   alias Rockelivery.{Repo, User}
 
-  def list do
+  def call do
     users = Repo.all(User)
     {:ok, users}
   end
