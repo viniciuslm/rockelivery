@@ -29,6 +29,11 @@ defmodule Rockelivery.User do
     |> changes(params, @required_params)
   end
 
+  def changeset(user, %{"password" => _password} = params) do
+    user
+    |> changes(params, @required_params)
+  end
+
   def changeset(user, params) do
     user
     |> changes(params, @update_params)

@@ -15,6 +15,6 @@ defmodule Rockelivery do
   defdelegate create_user(params), to: UserCreate, as: :call
   defdelegate delete_user(id), to: UserDelete, as: :call
   defdelegate get_user(id), to: UserGet, as: :by_id
-  defdelegate list, to: UserList, as: :list
+  defdelegate list, to: UserList, as: :call
   defdelegate update_user(params), to: UserUpdate, as: :call
 end
