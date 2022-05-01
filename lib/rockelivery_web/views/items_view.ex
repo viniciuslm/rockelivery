@@ -11,7 +11,7 @@ defmodule RockeliveryWeb.ItemsView do
 
   def render("delete.json", %{item: %Item{} = item}), do: %{item: item}
 
-  def render("index.json", %{items: [%Item{} = _item | _rest] = items}), do: %{items: items}
+  def render("index.json", %{items: items}), do: %{items: items}
 
   def render("show.json", %{item: %Item{} = item}), do: %{item: item}
 

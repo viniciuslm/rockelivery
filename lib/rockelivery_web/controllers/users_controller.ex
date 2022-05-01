@@ -23,7 +23,7 @@ defmodule RockeliveryWeb.UsersController do
   end
 
   def index(conn, _params) do
-    with {:ok, [%User{} = _user | _rest] = users} <- Rockelivery.list_users() do
+    with {:ok, users} <- Rockelivery.list_users() do
       conn
       |> put_status(:ok)
       |> render("index.json", users: users)

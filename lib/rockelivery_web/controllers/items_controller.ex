@@ -23,7 +23,7 @@ defmodule RockeliveryWeb.ItemsController do
   end
 
   def index(conn, _params) do
-    with {:ok, [%Item{} = _item | _rest] = items} <- Rockelivery.list_items() do
+    with {:ok, items} <- Rockelivery.list_items() do
       conn
       |> put_status(:ok)
       |> render("index.json", items: items)
