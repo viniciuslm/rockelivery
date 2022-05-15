@@ -19,7 +19,7 @@ defmodule Rockelivery.Item.CreateTest do
     end
 
     test "when there are invalid params, retuns an error" do
-      params = build(:item_params, %{category: "suco", price: "-1"})
+      params = build(:item_params, %{"category" => "suco", "price" => "-1"})
 
       response = Create.call(params)
 

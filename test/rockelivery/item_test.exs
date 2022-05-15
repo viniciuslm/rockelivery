@@ -40,7 +40,7 @@ defmodule Rockelivery.ItemTest do
     end
 
     test "when there is some error, returns an invalid changeset" do
-      params = build(:item_params, %{category: "suco", price: "1.d.234"})
+      params = build(:item_params, %{"category" => "suco", "price" => "1.d.234"})
 
       response = Item.changeset(params)
 

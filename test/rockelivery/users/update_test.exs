@@ -11,7 +11,7 @@ defmodule Rockelivery.Users.UpdateTest do
       insert(:user)
 
       params = %{
-        "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+        "id" => "ff295d64-4afe-4089-b4ea-e5e8528080ab",
         "email" => "teste1232@teste.com"
       }
 
@@ -40,7 +40,7 @@ defmodule Rockelivery.Users.UpdateTest do
       insert(:user)
 
       params = %{
-        "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+        "id" => "ff295d64-4afe-4089-b4ea-e5e8528080ab",
         "age" => 12,
         "password" => "1234"
       }

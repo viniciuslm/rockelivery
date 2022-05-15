@@ -13,7 +13,7 @@ defmodule RockeliveryWeb.ItemsViewTest do
     assert %{
              message: "Item created!",
              item: %Rockelivery.Item{
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "d097e758-c0c7-4215-af97-334b6ac933e1",
                category: "drink",
                description: "cerveja",
                photo: "cerveja.png",
@@ -29,7 +29,7 @@ defmodule RockeliveryWeb.ItemsViewTest do
 
     assert %{
              item: %Rockelivery.Item{
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "d097e758-c0c7-4215-af97-334b6ac933e1",
                category: "drink",
                description: "cerveja",
                photo: "cerveja.png",
@@ -46,7 +46,7 @@ defmodule RockeliveryWeb.ItemsViewTest do
     assert %{
              message: "Item updated!",
              item: %Rockelivery.Item{
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "d097e758-c0c7-4215-af97-334b6ac933e1",
                category: "drink",
                description: "cerveja",
                photo: "cerveja.png",
@@ -62,7 +62,7 @@ defmodule RockeliveryWeb.ItemsViewTest do
 
     assert %{
              item: %Rockelivery.Item{
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "d097e758-c0c7-4215-af97-334b6ac933e1",
                category: "drink",
                description: "cerveja",
                photo: "cerveja.png",
@@ -79,7 +79,7 @@ defmodule RockeliveryWeb.ItemsViewTest do
     assert %{
              items: [
                %Rockelivery.Item{
-                 id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                 id: "d097e758-c0c7-4215-af97-334b6ac933e1",
                  category: "drink",
                  description: "cerveja",
                  photo: "cerveja.png",

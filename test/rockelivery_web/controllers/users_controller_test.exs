@@ -64,7 +64,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
   describe "delete/2" do
     test "when there is a user with given id, delete the user", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       response =
         conn
@@ -76,7 +76,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d1"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       response =
         conn
@@ -103,7 +103,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
   describe "show/2" do
     test "when there is a user with given id, show the user", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       response =
         conn
@@ -117,7 +117,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
                  "cep" => "31260210",
                  "cpf" => "02577788622",
                  "email" => "teste123@teste.com",
-                 "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                 "id" => "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                  "name" => "Teste 2"
                }
              }
@@ -125,7 +125,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d1"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       response =
         conn
@@ -153,7 +153,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
                    "cep" => "31260210",
                    "cpf" => "02577788622",
                    "email" => "teste123@teste.com",
-                   "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                   "id" => "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                    "name" => "Teste 2"
                  }
                ]
@@ -164,7 +164,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
   describe "update/2" do
     test "when there is a user with given id, update the user", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       params = %{
         "name" => "Teste 333"
@@ -182,7 +182,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
                  "cep" => "31260210",
                  "cpf" => "02577788622",
                  "email" => "teste123@teste.com",
-                 "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                 "id" => "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                  "name" => "Teste 333"
                },
                "message" => "User updated!"
@@ -191,7 +191,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d1"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       params = %{
         "name" => "Teste 333"

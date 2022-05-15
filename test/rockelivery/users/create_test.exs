@@ -16,7 +16,7 @@ defmodule Rockelivery.Users.CreateTest do
     end
 
     test "when there are invalid params, retuns an error" do
-      params = build(:user_params, %{age: 12, password: "1234"})
+      params = build(:user_params, %{"age" => 12, "password" => "1234"})
 
       response = Create.call(params)
 

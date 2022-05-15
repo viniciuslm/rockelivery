@@ -45,7 +45,7 @@ defmodule RockeliveryWeb.ItemsControllerTest do
   describe "delete/2" do
     test "when there is a item with given id, delete the item", %{conn: conn} do
       insert(:item)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "d097e758-c0c7-4215-af97-334b6ac933e1"
 
       response =
         conn
@@ -84,7 +84,7 @@ defmodule RockeliveryWeb.ItemsControllerTest do
   describe "show/2" do
     test "when there is a item with given id, show the item", %{conn: conn} do
       insert(:item)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "d097e758-c0c7-4215-af97-334b6ac933e1"
 
       response =
         conn
@@ -93,7 +93,7 @@ defmodule RockeliveryWeb.ItemsControllerTest do
 
       assert response == %{
                "item" => %{
-                 "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                 "id" => "d097e758-c0c7-4215-af97-334b6ac933e1",
                  "category" => "drink",
                  "description" => "cerveja",
                  "photo" => "cerveja.png",
@@ -127,7 +127,7 @@ defmodule RockeliveryWeb.ItemsControllerTest do
       assert response == %{
                "items" => [
                  %{
-                   "id" => "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                   "id" => "d097e758-c0c7-4215-af97-334b6ac933e1",
                    "category" => "drink",
                    "description" => "cerveja",
                    "photo" => "cerveja.png",
@@ -141,7 +141,7 @@ defmodule RockeliveryWeb.ItemsControllerTest do
   describe "update/2" do
     test "when there is a item with given id, update the item", %{conn: conn} do
       insert(:item)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "d097e758-c0c7-4215-af97-334b6ac933e1"
 
       params = %{
         "name" => "Teste 333"
