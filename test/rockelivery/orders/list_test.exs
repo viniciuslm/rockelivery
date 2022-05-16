@@ -3,8 +3,8 @@ defmodule Rockelivery.Orders.ListTest do
 
   import Rockelivery.Factory
 
-  alias Rockelivery.Order
   alias Rockelivery.Items.Create, as: ItemCreate
+  alias Rockelivery.Order
   alias Rockelivery.Orders.{Create, List}
   alias Rockelivery.Users.Create, as: UserCreate
 
