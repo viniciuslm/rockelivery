@@ -1,7 +1,10 @@
 defmodule RockeliveryWeb.UsersControllerTest do
   use RockeliveryWeb.ConnCase
 
+  import Mox
   import Rockelivery.Factory
+
+  alias Rockelivery.ViaCep.ClientMock
 
   describe "create/2" do
     test "when all params are valid, create the user", %{conn: conn} do
@@ -14,6 +17,10 @@ defmodule RockeliveryWeb.UsersControllerTest do
         "password" => "123456",
         "name" => "Teste 2"
       }
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:ok, build(:cep_info)}
+      end)
 
       response =
         conn
@@ -44,6 +51,10 @@ defmodule RockeliveryWeb.UsersControllerTest do
         "password" => "123",
         "name" => "Teste 2"
       }
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:ok, build(:cep_info)}
+      end)
 
       response =
         conn
@@ -169,6 +180,10 @@ defmodule RockeliveryWeb.UsersControllerTest do
       params = %{
         "name" => "Teste 333"
       }
+
+      expect(ClientMock, :get_cep_info, fn _cep ->
+        {:ok, build(:cep_info)}
+      end)
 
       response =
         conn

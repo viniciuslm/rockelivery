@@ -29,8 +29,12 @@ config :logger, level: :warn
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# Use mock adapter for all clients
-config :tesla, adapter: Tesla.Mock
+config :rockelivery, Rockelivery.Users.Create, via_cep_adapter: Rockelivery.ViaCep.ClientMock
 
-# or only for one
-config :tesla, MyApi, adapter: Tesla.Mock
+config :rockelivery, Rockelivery.Users.Update, via_cep_adapter: Rockelivery.ViaCep.ClientMock
+
+# # Use mock adapter for all clients
+# config :tesla, adapter: Tesla.Mock
+
+# # or only for one
+# config :tesla, MyApi, adapter: Tesla.Mock

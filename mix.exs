@@ -64,7 +64,9 @@ defmodule Rockelivery.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:mock, "~> 0.3.0", only: :test},
-      {:pbkdf2_elixir, "~> 1.3"}
+      {:pbkdf2_elixir, "~> 1.3"},
+      {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 

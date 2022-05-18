@@ -1,18 +1,25 @@
 defmodule Rockelivery.Orders.ListTest do
   use Rockelivery.DataCase, async: true
 
+  import Mox
   import Rockelivery.Factory
 
   alias Rockelivery.Items.Create, as: ItemCreate
   alias Rockelivery.Order
   alias Rockelivery.Orders.{Create, List}
   alias Rockelivery.Users.Create, as: UserCreate
+  alias Rockelivery.ViaCep.ClientMock
 
   setup do
     params_item = build(:item_params)
     params_user = build(:user_params)
 
     {:ok, item} = ItemCreate.call(params_item)
+
+    expect(ClientMock, :get_cep_info, fn _cep ->
+      {:ok, build(:cep_info)}
+    end)
+
     {:ok, user} = UserCreate.call(params_user)
 
     {:ok, %{item: item, user: user}}

@@ -11,6 +11,10 @@ config :rockelivery,
   ecto_repos: [Rockelivery.Repo],
   generators: [binary_id: true]
 
+config :rockelivery, Rockelivery.Users.Create, via_cep_adapter: Rockelivery.ViaCep.Client
+
+config :rockelivery, Rockelivery.Users.Update, via_cep_adapter: Rockelivery.ViaCep.Client
+
 # Configures the endpoint
 config :rockelivery, RockeliveryWeb.Endpoint,
   url: [host: "localhost"],

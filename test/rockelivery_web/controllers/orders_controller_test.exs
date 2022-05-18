@@ -1,17 +1,24 @@
 defmodule RockeliveryWeb.OrdersControllerTest do
   use RockeliveryWeb.ConnCase
 
+  import Mox
   import Rockelivery.Factory
 
   alias Rockelivery.Items.Create, as: ItemCreate
   alias Rockelivery.Orders.Create, as: OrderCreate
   alias Rockelivery.Users.Create, as: UserCreate
+  alias Rockelivery.ViaCep.ClientMock
 
   setup do
     params_item = build(:item_params)
     params_user = build(:user_params)
 
     {:ok, item} = ItemCreate.call(params_item)
+
+    expect(ClientMock, :get_cep_info, fn _cep ->
+      {:ok, build(:cep_info)}
+    end)
+
     {:ok, user} = UserCreate.call(params_user)
 
     params =
