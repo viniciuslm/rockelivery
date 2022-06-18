@@ -66,7 +66,8 @@ defmodule Rockelivery.MixProject do
       {:mock, "~> 0.3.0", only: :test},
       {:pbkdf2_elixir, "~> 1.3"},
       {:bypass, "~> 2.1", only: :test},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:guardian, "~> 2.0"}
     ]
   end
 

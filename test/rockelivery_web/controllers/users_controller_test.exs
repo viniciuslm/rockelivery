@@ -5,6 +5,7 @@ defmodule RockeliveryWeb.UsersControllerTest do
   import Rockelivery.Factory
 
   alias Rockelivery.ViaCep.ClientMock
+  alias RockeliveryWeb.Auth.Guardian
 
   describe "create/2" do
     test "when all params are valid, create the user", %{conn: conn} do
@@ -12,8 +13,8 @@ defmodule RockeliveryWeb.UsersControllerTest do
         "address" => "rua teste 1",
         "age" => 27,
         "cep" => "31260210",
-        "cpf" => "02577788622",
-        "email" => "teste123@teste.com",
+        "cpf" => "02577788621",
+        "email" => "teste121@teste.com",
         "password" => "123456",
         "name" => "Teste 2"
       }
@@ -33,8 +34,8 @@ defmodule RockeliveryWeb.UsersControllerTest do
                  "address" => "rua teste 1",
                  "age" => 27,
                  "cep" => "31260210",
-                 "cpf" => "02577788622",
-                 "email" => "teste123@teste.com",
+                 "cpf" => "02577788621",
+                 "email" => "teste121@teste.com",
                  "id" => _id,
                  "name" => "Teste 2"
                }
@@ -73,8 +74,16 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "delete/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user: user}
+    end
+
     test "when there is a user with given id, delete the user", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       response =
@@ -86,7 +95,6 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       response =
@@ -98,7 +106,6 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is a invalid id, returns an error", %{conn: conn} do
-      insert(:user)
       id = "7d8972e2-62ff-40fa-8c28"
 
       response =
@@ -112,8 +119,16 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "show/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user: user}
+    end
+
     test "when there is a user with given id, show the user", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       response =
@@ -135,7 +150,6 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       response =
@@ -148,9 +162,16 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "list/2" do
-    test "when call list users, show all users", %{conn: conn} do
-      insert(:user)
+    setup %{conn: conn} do
+      user = insert(:user)
 
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user: user}
+    end
+
+    test "when call list users, show all users", %{conn: conn} do
       response =
         conn
         |> get(Routes.users_path(conn, :index))
@@ -173,8 +194,16 @@ defmodule RockeliveryWeb.UsersControllerTest do
   end
 
   describe "update/2" do
+    setup %{conn: conn} do
+      user = insert(:user)
+
+      {:ok, token, _claims} = Guardian.encode_and_sign(user)
+      conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+      {:ok, conn: conn, user: user}
+    end
+
     test "when there is a user with given id, update the user", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       params = %{
@@ -205,7 +234,6 @@ defmodule RockeliveryWeb.UsersControllerTest do
     end
 
     test "when there is a user without given id, returns an error", %{conn: conn} do
-      insert(:user)
       id = "ff295d64-4afe-4089-b4ea-e5e8528080a1"
 
       params = %{

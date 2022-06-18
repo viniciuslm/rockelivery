@@ -31,6 +31,14 @@ config :rockelivery, RockeliveryWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :rockelivery, Rockelivery.Mailer, adapter: Swoosh.Adapters.Local
 
+config :rockelivery, RockeliveryWeb.Auth.Guardian,
+  issuer: "rockelivery",
+  secret_key: "pJFXUuLkub0Zk3rYcvdzZEPPxFhwmdc4CFu5mJHSVuNnz3hbRaZJZ491LzE4Ukg0"
+
+config :rockelivery, RockeliveryWeb.Auth.Pipeline,
+  module: RockeliveryWeb.Auth.Guardian,
+  error_handler: RockeliveryWeb.Auth.ErrorHandler
+
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 

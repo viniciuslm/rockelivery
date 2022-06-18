@@ -2,6 +2,16 @@ defmodule RockeliveryWeb.ItemsControllerTest do
   use RockeliveryWeb.ConnCase
 
   import Rockelivery.Factory
+  alias RockeliveryWeb.Auth.Guardian
+
+  setup %{conn: conn} do
+    user = insert(:user)
+
+    {:ok, token, _claims} = Guardian.encode_and_sign(user)
+    conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+    {:ok, conn: conn, user: user}
+  end
 
   describe "create/2" do
     test "when all params are valid, create the item", %{conn: conn} do

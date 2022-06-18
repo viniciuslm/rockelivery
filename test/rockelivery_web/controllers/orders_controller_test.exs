@@ -6,12 +6,11 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
   alias Rockelivery.Items.Create, as: ItemCreate
   alias Rockelivery.Orders.Create, as: OrderCreate
-  alias Rockelivery.Users.Create, as: UserCreate
   alias Rockelivery.ViaCep.ClientMock
+  alias RockeliveryWeb.Auth.Guardian
 
-  setup do
+  setup %{conn: conn} do
     params_item = build(:item_params)
-    params_user = build(:user_params)
 
     {:ok, item} = ItemCreate.call(params_item)
 
@@ -19,7 +18,12 @@ defmodule RockeliveryWeb.OrdersControllerTest do
       {:ok, build(:cep_info)}
     end)
 
-    {:ok, user} = UserCreate.call(params_user)
+    user = insert(:user)
+
+    {:ok, token, _claims} = Guardian.encode_and_sign(user)
+    conn = put_req_header(conn, "authorization", "Bearer #{token}")
+
+    {:ok, conn: conn, user: user}
 
     params =
       build(:order_params, %{
@@ -29,7 +33,7 @@ defmodule RockeliveryWeb.OrdersControllerTest do
 
     {:ok, order} = OrderCreate.call(params)
 
-    {:ok, %{item: item, user: user, order: order}}
+    {:ok, conn: conn, item: item, user: user, order: order}
   end
 
   describe "create/2" do

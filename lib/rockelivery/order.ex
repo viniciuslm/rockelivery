@@ -8,14 +8,14 @@ defmodule Rockelivery.Order do
   @foreign_key_type :binary_id
 
   @required_params [:address, :comments, :payment_method, :user_id]
-  @payments_methos [:money, :credit_card, :debit_card]
+  @payments_methods [:money, :credit_card, :debit_card]
 
   @derive {Jason.Encoder, only: @required_params ++ [:id, :items]}
 
   schema "orders" do
     field :address, :string
     field :comments, :string
-    field :payment_method, Ecto.Enum, values: @payments_methos
+    field :payment_method, Ecto.Enum, values: @payments_methods
 
     many_to_many :items, Item, join_through: "orders_items", on_delete: :delete_all
     belongs_to :user, User
@@ -28,7 +28,5 @@ defmodule Rockelivery.Order do
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> put_assoc(:items, items)
-
-    # |> validate_length(:address, min: 16)
   end
 end
