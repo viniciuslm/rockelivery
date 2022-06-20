@@ -9,7 +9,7 @@ defmodule Rockelivery.Users.DeleteTest do
   describe "call/1" do
     test "when there is a user with given id, delete the user" do
       insert(:user)
-      id = "7d8972e2-62ff-40fa-8c28-2623620dd3d9"
+      id = "ff295d64-4afe-4089-b4ea-e5e8528080ab"
 
       response = Delete.call(id)
 

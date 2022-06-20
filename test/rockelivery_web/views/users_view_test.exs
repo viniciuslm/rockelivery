@@ -9,23 +9,25 @@ defmodule RockeliveryWeb.UsersViewTest do
 
   test "create.json" do
     user = build(:user)
+    token = "xpto1234"
 
     assert %{
              message: "User created!",
+             token: "xpto1234",
              user: %Rockelivery.User{
                address: "rua teste 1",
                age: 27,
                cep: "31260210",
                cpf: "02577788622",
                email: "teste123@teste.com",
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                inserted_at: nil,
                name: "Teste 2",
                password: "123456",
                password_hash: nil,
                updated_at: nil
              }
-           } = render(UsersView, "create.json", user: user)
+           } = render(UsersView, "create.json", token: token, user: user)
   end
 
   test "show.json" do
@@ -38,7 +40,7 @@ defmodule RockeliveryWeb.UsersViewTest do
                cep: "31260210",
                cpf: "02577788622",
                email: "teste123@teste.com",
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                inserted_at: nil,
                name: "Teste 2",
                password: "123456",
@@ -59,7 +61,7 @@ defmodule RockeliveryWeb.UsersViewTest do
                cep: "31260210",
                cpf: "02577788622",
                email: "teste123@teste.com",
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                inserted_at: nil,
                name: "Teste 2",
                password: "123456",
@@ -79,7 +81,7 @@ defmodule RockeliveryWeb.UsersViewTest do
                cep: "31260210",
                cpf: "02577788622",
                email: "teste123@teste.com",
-               id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+               id: "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                inserted_at: nil,
                name: "Teste 2",
                password: "123456",
@@ -100,7 +102,7 @@ defmodule RockeliveryWeb.UsersViewTest do
                  cep: "31260210",
                  cpf: "02577788622",
                  email: "teste123@teste.com",
-                 id: "7d8972e2-62ff-40fa-8c28-2623620dd3d9",
+                 id: "ff295d64-4afe-4089-b4ea-e5e8528080ab",
                  inserted_at: nil,
                  name: "Teste 2",
                  password: "123456",

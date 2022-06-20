@@ -11,6 +11,10 @@ config :rockelivery,
   ecto_repos: [Rockelivery.Repo],
   generators: [binary_id: true]
 
+config :rockelivery, Rockelivery.Users.Create, via_cep_adapter: Rockelivery.ViaCep.Client
+
+config :rockelivery, Rockelivery.Users.Update, via_cep_adapter: Rockelivery.ViaCep.Client
+
 # Configures the endpoint
 config :rockelivery, RockeliveryWeb.Endpoint,
   url: [host: "localhost"],
@@ -26,6 +30,14 @@ config :rockelivery, RockeliveryWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :rockelivery, Rockelivery.Mailer, adapter: Swoosh.Adapters.Local
+
+config :rockelivery, RockeliveryWeb.Auth.Guardian,
+  issuer: "rockelivery",
+  secret_key: "pJFXUuLkub0Zk3rYcvdzZEPPxFhwmdc4CFu5mJHSVuNnz3hbRaZJZ491LzE4Ukg0"
+
+config :rockelivery, RockeliveryWeb.Auth.Pipeline,
+  module: RockeliveryWeb.Auth.Guardian,
+  error_handler: RockeliveryWeb.Auth.ErrorHandler
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

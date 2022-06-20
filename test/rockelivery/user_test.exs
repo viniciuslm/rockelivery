@@ -40,7 +40,7 @@ defmodule Rockelivery.UserTest do
     end
 
     test "when there is some error, returns an invalid changeset" do
-      params = build(:user_params, %{age: 12, password: "1234"})
+      params = build(:user_params, %{"age" => 12, "password" => "1234"})
 
       response = User.changeset(params)
 
